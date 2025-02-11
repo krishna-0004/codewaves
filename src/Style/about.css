@@ -1,20 +1,25 @@
-/* General Styling for About Page */
 .about-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100vw; /* Ensure full width */
+    min-height: 100vh;
+    width: 100vw;
+    max-width: 100%;
     position: relative;
-    z-index: 1;
+    z-index: 2;
     color: #fff;
     padding: 20px;
     text-align: center;
+    margin-top: 0 !important;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards;
 }
 
-
 .about-title {
+    margin-top: 70px;
     font-size: 3rem;
     font-weight: bold;
     color: #f39c12;
@@ -23,83 +28,6 @@
     text-transform: uppercase;
     animation: fadeIn 1s ease-in-out;
 }
-
-.about-description {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    max-width: 800px;
-    color: #dcdcdc;
-    margin-bottom: 20px;
-    animation: fadeIn 1.5s ease-in-out;
-}
-
-/* Hero Section Styling */
-.hero-section {
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 15px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(8px);
-}
-
-/* Logo Styling */
-.home-logo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.home-logo:hover {
-    transform: scale(1.1);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
-}
-
-/* Typewriter Effect Styling */
-.hero-heading {
-    font-size: 3rem;
-    margin: 10px 0;
-    letter-spacing: 1.5px;
-    font-weight: bold;
-    color: #06c5f0;
-    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 4px solid #f39c12;
-    width: 100%;
-    animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
-}
-
-@keyframes typing {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-}
-
-@keyframes blink {
-    from,
-    to {
-        border-color: transparent;
-    }
-    50% {
-        border-color: #f39c12;
-    }
-}
-
-/* Subheading Styling */
-.hero-subheading {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    color: #e0e0e0;
-    opacity: 0.9;
-}
-
-/* Fade-in Animation */
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -116,13 +44,215 @@
     text-shadow: 0 0 10px #f39c12, 0 0 20px #f39c12;
     transition: text-shadow 0.3s ease-in-out;
 }
+.hero-section {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+}
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .about-title {
-        font-size: 2.5rem;
+.home-logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-logo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
+.hero-heading {
+    font-size: 3rem;
+    margin: 10px 0;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    color: #06c5f0;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 4px solid #f39c12;
+    width: 100%;
+    animation: typing 7s steps(30) infinite alternate, blink 0.75s step-end infinite;
+}
+
+/* Continuous Typing Effect */
+@keyframes typing {
+    0% {
+        width: 0;
     }
-    .about-description {
-        font-size: 1.2rem;
+    50% {
+        width: 100%;
     }
+    100% {
+        width: 0;
+    }
+}
+
+/* Blinking Cursor */
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+/* Subheading styling */
+
+.hero-subheading {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+    opacity: 0.9;
+}
+
+/* Scrolling Content Styling */
+.scrolling-content {
+    margin-top: 40px;
+    width: 100%;
+    max-width: 1000px;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+/* Scroll Animation */
+.scroll-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 100px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Improved Slide-Up Animation */
+.scroll-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: slideUpBounce 1s ease-out;
+}
+
+/* Slide-Up with Bounce Effect */
+@keyframes slideUpBounce {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Alternating Direction for a Dynamic Look */
+.scroll-item.even {
+    flex-direction: row-reverse;
+    animation: slideLeft 1s ease-out;
+}
+
+.scroll-item.odd {
+    flex-direction: row;
+    animation: slideRight 1s ease-out;
+}
+
+/* Slide Left & Right for a Parallax Effect */
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Image Styling */
+.item-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Improved Image Animation & Effects */
+.item-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+}
+
+/* Glow Effect on Hover */
+.item-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 20px 40px rgba(0, 255, 255, 0.6);
+    filter: brightness(1.3);
+}
+
+/* Text Block Styling */
+.item-info {
+    flex: 1;
+    padding: 0 30px;
+    max-width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    animation: fadeInText 1.2s ease-in-out;
+}
+
+/* Staggered Text Reveal */
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(10px) scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Title Styling */
+.item-info h2 {
+    font-size: 2.2rem;
+    color: #f39c12;
+    margin-bottom: 15px;
+    animation: fadeInText 1.5s ease-in-out;
+}
+
+/* Paragraph Styling */
+.item-info p {
+    font-size: 1.3rem;
+    color: #dcdcdc;
+    line-height: 1.6;
+    animation: fadeInText 1.8s ease-in-out;
 }
