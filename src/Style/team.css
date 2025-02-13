@@ -1,6 +1,98 @@
-.main{
-    height: 100vh;
+/* Ensure proper spacing between sections */
+.container {
+    width: 100%;
+    padding: 80px 20px;
+    margin-top: 100px; /* Creates space between sections */
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Team Title */
+.team-title {
+    font-size: 2.8rem;
+    color: #f39c12;
     text-align: center;
-    color: aliceblue;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+/* Card Styling */
+.card {
+    background: #222;
+    width: 250px;
+    height: 300px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+/* On Hover - Scale Effect */
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(255, 165, 0, 0.6);
+}
+
+/* Content Styling */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Image Container */
+.imgBX {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Image Styling */
+.imgBX img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.3s ease-in-out;
+}
+
+/* Hover Effect on Image */
+.imgBX:hover img {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+/* Flexbox Layout for Responsive Grid */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .card {
+        width: 90%;
+        height: auto;
+    }
 }
