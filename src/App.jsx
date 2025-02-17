@@ -6,6 +6,7 @@ import Home from "./Components/Home";
 import About from "./Components/About";
 import Team from "./Components/Team";
 import Contact from "./Components/Contact";
+import Profile from "./Components/Profile"; // Make sure you have this component
 import "./App.css";
 
 const MainContent = () => {
@@ -63,6 +64,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<MainContent />} />
+      <Route path="/profile/:id" element={<Profile />} /> {/* Corrected line */}
     </Routes>
   );
 };

@@ -17,7 +17,7 @@ const About = () => {
                     }
                 });
             },
-            { threshold: 0.2 } // Slightly higher threshold for smoother visibility transition
+            { threshold: 0.2 }
         );
 
         itemRefs.current.forEach((ref) => {
@@ -35,24 +35,36 @@ const About = () => {
                 <h1 className="hero-heading typewriter">Welcome to CodeWave</h1>
                 <p className="hero-subheading">Wave Goodbye to Limits</p>
             </div>
-            <div className="scrolling-content">
-                {items.map((item, index) => (
-                    <div
-                        key={index}
-                        id={index.toString()}
-                        ref={(el) => (itemRefs.current[index] = el)}
-                        className={`scroll-item ${index % 2 === 0 ? 'even' : 'odd'} ${visibleItems.includes(index) ? 'visible' : ''}`}
-                        style={{ transitionDelay: `${index * 100}ms` }} // Staggered animations
-                    >
-                        <div className="item-image-container">
-                            <img src={item.image || "/placeholder.svg"} alt={item.title} className="item-image" />
-                        </div>
-                        <div className="item-info">
-                            <h2>{item.title}</h2>
-                            <p>{item.description}</p>
-                        </div>
+            <div className="roadway">
+                <div className="road-container">
+                    <div className="road">
+                        <div className="road-line"></div>
                     </div>
-                ))}
+                </div>
+                <div className="scrolling-content">
+                    {items.map((item, index) => (
+                        <div
+                            key={index}
+                            id={index.toString()}
+                            ref={(el) => (itemRefs.current[index] = el)}
+                            className={`scroll-item ${index % 2 === 0 ? 'even' : 'odd'} ${visibleItems.includes(index) ? 'visible' : ''}`}
+                        >
+                            {/* Road Connector */}
+                            <div className="road-connector"></div>
+
+                            {/* Image and Text Block */}
+                            <div className="item-image-container">
+                                <img src={item.image || "/placeholder.svg"} alt={item.title} className="item-image" />
+                            </div>
+                            <div className="road-marker"></div>
+                            <div className="item-info">
+                                <h2>{item.title}</h2>
+                                <p>{item.description}</p>
+                            </div>
+                        </div>
+                    ))}
+
+                </div>
             </div>
         </div>
     );

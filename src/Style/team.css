@@ -1,98 +1,207 @@
-/* Ensure proper spacing between sections */
+/* Team Section */
 .container {
-    width: 100%;
-    padding: 80px 20px;
-    margin-top: 100px; /* Creates space between sections */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    position: relative;
-    z-index: 2;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+  text-align: center;
 }
 
-/* Team Title */
 .team-title {
-    font-size: 2.8rem;
-    color: #f39c12;
-    text-align: center;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: bold;
+  margin-top: 70px;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #f39c12;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  animation: fadeIn 1s ease-in-out;
 }
 
-/* Card Styling */
+/* Grid Layout */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 100px;
+  justify-content: center;
+}
+
+/* Card Styling with Glassmorphism */
 .card {
-    background: #222;
-    width: 250px;
-    height: 300px;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-    position: relative;
+  position: relative;
+  width: 100%;
+  height: 350px; /* Increase height to provide more space */
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px) saturate(180%);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 255, 255, 0.5);
+  overflow: hidden;
+  transition: transform 0.5s ease, box-shadow 0.5s ease, backdrop-filter 0.3s;
+  perspective: 1000px;
+  border: 2px solid rgba(0, 255, 255, 0.7);
+  animation: float 3s infinite ease-in-out;
+  text-align: center;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* This makes sure the content is spaced properly */
 }
 
-/* On Hover - Scale Effect */
 .card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 20px 40px rgba(255, 165, 0, 0.6);
+  box-shadow: 0 15px 50px rgba(0, 255, 255, 0.8);
+  background: rgba(0, 255, 255, 0.2);
+  transform: translateY(-10px);
 }
 
-/* Content Styling */
-.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-/* Image Container */
+/* Image Box */
 .imgBX {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 15px;
-    transition: transform 0.3s ease-in-out;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid rgba(255, 255, 255, 0.5);
+  transition: transform 0.4s ease-in-out;
+  display: flex;
+  justify-content: center;  /* Ensures the image is horizontally centered */
+  align-items: center;      /* Ensures the image is vertically centered */
+  margin: 0 auto;           /* Centers the .imgBX container itself */
 }
 
-/* Image Styling */
+.card:hover .imgBX {
+  transform: scale(1.15);
+}
+
 .imgBX img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease, filter 0.3s ease-in-out;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Hover Effect on Image */
-.imgBX:hover img {
-    transform: scale(1.1);
-    filter: brightness(1.2);
+/* Content Box */
+.contentBX {
+  margin-top: 15px;
+  text-align: center;
+  flex-grow: 1; /* This ensures that content expands properly */
 }
 
-/* Flexbox Layout for Responsive Grid */
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
+/* Post Styling */
+.contentBX h3 {
+  font-size: 1.3rem;
+  color: #ffffff;
+  text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3);
+  margin-bottom: 20px; /* Added margin to create space below the post */
+  font-style: italic; /* Add a bit of style to the text */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
+/* Social Icons */
+.sci {
+  position: relative; /* Changed from absolute to relative */
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 15px; /* Added margin to provide space from post */
+}
 
-    .card {
-        width: 90%;
-        height: auto;
-    }
+.sci li {
+  list-style: none;
+}
+
+.sci .icons {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sci .icons:hover {
+  transform: scale(1.3);
+}
+
+.sci img {
+  width: 30px;
+  height: 30px;
+}
+
+
+/* Name Styling */
+.name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden;    /* Ensures that overflowing text is hidden */
+  text-overflow: ellipsis; /* Optional: Adds ellipsis if the name is too long */
+  font-family: 'Arial', sans-serif;
+}
+
+/* View Button (Updated) */
+.view {
+  margin-top: 15px;
+  padding: 12px 22px;  /* Adjusted padding to match new style */
+  background: linear-gradient(135deg, #00b4b4, #00ffff); /* Refined gradient */
+  color: black;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px; /* More rounded edges for a smoother look */
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.5); /* Slightly more glow */
+  text-transform: uppercase;
+  font-weight: bold; /* Added font weight for emphasis */
+  font-size: 14px;
+  letter-spacing: 1px; /* Spacing between letters for better readability */
+  margin-bottom: 10px; /* Added margin to avoid overlap */
+  outline: none; /* Removed outline on focus */
+}
+
+/* Hover state with more dynamic effects */
+.view:hover {
+  background: white;
+  color: #00b4b4;
+  box-shadow: 0px 0px 25px rgba(0, 255, 255, 0.7); /* Enhanced hover effect */
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Active state with smooth effect */
+.view:active {
+  background: #00b4b4; /* Active button background */
+  color: white; /* Text color changes when active */
+  box-shadow: 0px 0px 30px rgba(0, 255, 255, 0.8); /* Stronger glow when active */
+  transform: scale(0.98); /* Slightly shrink for active effect */
+  transition: all 0.1s ease-in-out;
+}
+
+/* Focus state for accessibility */
+.view:focus {
+  outline: 2px solid #00b4b4; /* Focus outline for accessibility */
+}
+
+
+/* Animation for Card Floating */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Fade-In Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
