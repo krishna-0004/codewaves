@@ -1,0 +1,302 @@
+/* General Profile Layout */
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: white;
+  padding: 40px 20px;
+}
+
+/* Profile Container */
+.profile-container {
+  display: flex;
+  flex-direction: row; /* Image & text side by side */
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* Profile Section with Circular Animation */
+.profile-pro {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Circular Theme Section */
+.rounding-sec {
+  position: relative;
+  width: 500px; /* Increased for better spacing */
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Profile Image */
+.profile-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.profile-images img {
+  width: 200px; /* Perfectly sized */
+  height: 200px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px cyan;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  z-index: 2; /* Ensures it's above the rotating icons */
+}
+
+.profile-images img:hover {
+  transform: scale(1.1);
+}
+
+/* Rotating Skill Icons */
+.big-circle {
+  width: 400px; /* Increased size for better spacing */
+  height: 400px;
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: Rotate 15s linear infinite;
+  border: 3px dashed rgba(0, 255, 255, 0.7);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+}
+
+/* Individual Skill Icons */
+.icon-block {
+  width: 65px; /* Balanced size */
+  height: 65px;
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 0 12px #fff;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.icon-block:hover {
+  transform: scale(1.2);
+}
+
+/* Icons Inside Blocks */
+.icon-block img {
+  width: 85%;
+  animation: Rotate-reverse 15s linear infinite;
+}
+
+/* Proper Equal Spacing of Icons Around the Larger Circle */
+.icon-block:nth-child(1) { top: 0; left: 50%; transform: translate(-50%, -50%); }  /* Top */
+.icon-block:nth-child(2) { top: 25%; right: 5%; transform: translate(50%, -50%); } /* Upper Right */
+.icon-block:nth-child(3) { bottom: 25%; right: 5%; transform: translate(50%, 50%); } /* Lower Right */
+.icon-block:nth-child(4) { bottom: 0; left: 50%; transform: translate(-50%, 50%); }  /* Bottom */
+.icon-block:nth-child(5) { bottom: 25%; left: 5%; transform: translate(-50%, 50%); } /* Lower Left */
+.icon-block:nth-child(6) { top: 25%; left: 5%; transform: translate(-50%, -50%); } /* Upper Left */
+
+/* Rotation Animations */
+@keyframes Rotate { 
+  from { transform: rotate(0deg); } 
+  to { transform: rotate(360deg); } 
+}
+
+@keyframes Rotate-reverse { 
+  from { transform: rotate(360deg); } 
+  to { transform: rotate(0deg); } 
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+  .rounding-sec {
+    width: 380px;
+    height: 380px;
+  }
+
+  .profile-images img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .big-circle {
+    width: 320px;
+    height: 320px;
+  }
+
+  .icon-block {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+
+/* Profile Text Section - Premium & Elegant */
+.profile-text {
+  flex: 1;
+  text-align: left;
+  padding: 40px;
+  background: #121212; /* Dark elegant background */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  max-width: 550px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hover Effect */
+.profile-text:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+}
+
+/* Profile Name */
+.profile-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Profile Role */
+.profile-text h3 {
+  font-size: 1.6rem;
+  color: cyan;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Profile Description */
+.profile-text p {
+  font-size: 1.2rem;
+  color: #b0b0b0;
+  margin-bottom: 15px;
+  text-align: center;
+  line-height: 1.6;
+  transition: color 0.3s ease-in-out;
+}
+
+.profile-text p:hover {
+  color: white;
+}
+
+/* Typing Effect */
+.typing-text {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: cyan;
+  margin-top: 15px;
+  text-align: center;
+}
+
+/* Achievements Section */
+.achievements {
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.achievements:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
+}
+
+.achievements h4 {
+  font-size: 1.5rem;
+  color: cyan;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* Achievements List */
+.achievements ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.achievements li {
+  font-size: 1rem;
+  color: #ddd;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+.achievements li:hover {
+  transform: scale(1.05);
+  background: cyan;
+  color: #000;
+}
+
+/* Social Links */
+.social-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* LinkedIn & GitHub Buttons */
+.social-links a {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.linkedin {
+  background: #0077b5;
+  color: white;
+  box-shadow: 0 0 8px rgba(0, 119, 181, 0.5);
+}
+
+.github {
+  background: #333;
+  color: white;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.social-links a:hover {
+  transform: translateY(-3px);
+  background: cyan;
+  color: black;
+  box-shadow: 0 0 12px cyan;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+  .profile-text {
+    text-align: center;
+    max-width: 90%;
+    padding: 30px;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}

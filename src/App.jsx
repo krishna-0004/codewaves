@@ -6,7 +6,7 @@ import Home from "./Components/Home";
 import About from "./Components/About";
 import Team from "./Components/Team";
 import Contact from "./Components/Contact";
-import Profile from "./Components/Profile"; // Make sure you have this component
+import Pro from "./Components/Pro";
 import "./App.css";
 
 const MainContent = () => {
@@ -41,7 +41,6 @@ const MainContent = () => {
   return (
     <>
       <Nav scrollToSection={scrollToSection} />
-      <Bground />
       <main>
         <section ref={homeRef} id="home">
           <Home scrollToSection={scrollToSection} />
@@ -62,10 +61,13 @@ const MainContent = () => {
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<MainContent />} />
-      <Route path="/profile/:id" element={<Profile />} /> {/* Corrected line */}
-    </Routes>
+    <>
+      <Bground />
+      <Routes>
+        <Route path="/" element={<MainContent />} />
+        <Route path="/profile/:id" element={<Pro />} />
+      </Routes>
+    </>
   );
 };
 

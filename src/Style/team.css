@@ -140,6 +140,7 @@
 
 /* View Button (Updated) */
 .view {
+  text-decoration: none;
   margin-top: 15px;
   padding: 12px 22px;  /* Adjusted padding to match new style */
   background: linear-gradient(135deg, #00b4b4, #00ffff); /* Refined gradient */

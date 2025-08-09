@@ -10,14 +10,6 @@ const Bground = () => {
       <div className="shape shape4"></div>
       <div className="shape shape5"></div>
       <div className="shape shape7"></div>
-      <div className="shape shape6"></div>
-      <div className="shape shape8"></div>
-      <div className="shape shape9"></div>
-      <div className="shape shape10"></div>
-      <div className="shape shape11"></div>
-      <div className="shape shape12"></div>
-      <div className="shape shape13"></div>
-      <div className="shape shape14"></div>
     </div>
   )
 }

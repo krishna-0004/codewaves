@@ -7,8 +7,10 @@ const Nav = ({ scrollToSection }) => {
   const navigate = useNavigate();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState("home");
+  const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
+  const [visible, setVisible] = useState(true);
 
-  const handelNavClick = (section) => {
+  const handleNavClick = (section) => {
     if (location.pathname === "/") {
       scrollToSection(section);
     } else {
@@ -21,20 +23,21 @@ const Nav = ({ scrollToSection }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const progress = (scrollTop / scrollHeight) * 100;
-      setScrollProgress(progress);
+      const currentScrollPos = window.scrollY;
+      setScrollProgress((currentScrollPos / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100);
+
+      // Show navbar when scrolling up, hide when scrolling down
+      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+      setPrevScrollPos(currentScrollPos);
 
       // Detect which section is currently in view
       const sections = document.querySelectorAll("section");
-      let currentSection = "home"; // Default to home
+      let currentSection = "home";
 
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 100; // Adjust based on navbar height
+        const sectionTop = section.offsetTop - 100;
         const sectionBottom = sectionTop + section.offsetHeight;
-
-        if (scrollTop >= sectionTop && scrollTop < sectionBottom) {
+        if (currentScrollPos >= sectionTop && currentScrollPos < sectionBottom) {
           currentSection = section.id;
         }
       });
@@ -44,19 +47,27 @@ const Nav = ({ scrollToSection }) => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [prevScrollPos]);
 
   return (
-    <header>
+    <header className={`nav-container ${visible ? "visible" : "hidden"}`}>
       <nav className="Navbar">
         <div className="club">CodeWave</div>
         <ul className="nav-menu">
-          <li className={activeSection === "home" ? "active" : ""} onClick={() => handelNavClick("home")}>Home</li>
-          <li className={activeSection === "aboutus" ? "active" : ""} onClick={() => handelNavClick("aboutus")}>About Us</li>
-          <li className={activeSection === "team" ? "active" : ""} onClick={() => handelNavClick("team")}>Our Team</li>
+          <li className={activeSection === "home" ? "active" : ""} onClick={() => handleNavClick("home")}>
+            Home
+          </li>
+          <li className={activeSection === "aboutus" ? "active" : ""} onClick={() => handleNavClick("aboutus")}>
+            About Us
+          </li>
+          <li className={activeSection === "team" ? "active" : ""} onClick={() => handleNavClick("team")}>
+            Our Team
+          </li>
         </ul>
         <div className="contact">
-          <button className={`contact-us ${activeSection === "contact" ? "active" : ""}`} onClick={() => handelNavClick("contact")}>Contact Us</button>
+          <button className={`contact-us ${activeSection === "contact" ? "active" : ""}`} onClick={() => handleNavClick("contact")}>
+            Contact Us
+          </button>
         </div>
         <div className="scroll-progress" style={{ width: `${scrollProgress}%` }}></div>
       </nav>

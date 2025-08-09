@@ -7,7 +7,7 @@
     background: rgba(0, 0, 0, 0.6); /* Softer Glass Effect */
     backdrop-filter: blur(15px);
     border-radius: 12px;
-    position: fixed;
+    /* position: fixed; */
     width: 90%;
     top: 15px;
     left: 50%;
@@ -16,6 +16,26 @@
     box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
     transition: all 0.3s ease-in-out;
     overflow: hidden;
+}
+
+/* Navbar Visibility Control */
+.nav-container {
+    transition: top 0.3s ease-in-out;
+    position: fixed;
+    width: 100%;
+    top: 15px;
+    left: 50%;
+    z-index: 1000;
+}
+
+/* Visible Navbar */
+.nav-container.visible {
+    top: 15px; /* Adjust based on navbar's position */
+}
+
+/* Hidden Navbar */
+.nav-container.hidden {
+    top: -100px;
 }
 
 /* Club Name (CodeWave) */

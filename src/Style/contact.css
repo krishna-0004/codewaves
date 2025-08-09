@@ -1,6 +1,157 @@
-.main{
-    height: 100vh;
+/* Full-page Contact Section */
+.contact-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 60px 20px;
+}
+
+/* Contact Wrapper (Glassmorphism) */
+.contact-wrapper {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 50px;
+    max-width: 600px;
+    width: 100%;
     text-align: center;
-    color: aliceblue;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 10px 40px rgba(0, 255, 255, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover Effect for Depth */
+.contact-wrapper:hover {
+    transform: scale(1.02);
+}
+
+/* Contact Title */
+.contact-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 15px cyan;
+    margin-bottom: 15px;
+}
+
+/* Success Message */
+.success-message {
+    font-size: 1rem;
+    color: rgb(0, 213, 255);
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgb(0, 242, 255);
+}
+
+/* Contact Form */
+.contact-form-container {
+    text-align: left;
+}
+
+/* Form Layout */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Form Fields */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Labels */
+label {
+    font-size: 1rem;
+    color: cyan;
+    font-weight: bold;
+}
+
+/* Input Fields */
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Placeholder Styling */
+input::placeholder,
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Focus Effect */
+input:focus,
+textarea:focus {
+    border-color: cyan;
+    box-shadow: 0 0 10px cyan;
+}
+
+/* Textarea Styling */
+textarea {
+    resize: none;
+    height: 120px;
+}
+
+/* Send Button */
+.btn {
+    display: block;
+    width: 50%;  /* Adjust width as needed */
+    padding: 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #00b4b4, #00ffff);
+    border: none;
+    border-radius: 8px;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.5);
+    margin: 0 auto; /* Center the button */
+    text-align: center;
+}
+
+/* Button Hover Effect */
+.btn:hover {
+    background: white;
+    color: #00b4b4;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 25px rgba(0, 255, 255, 0.7);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Disable Button Effect */
+.btn:disabled {
+    background: gray;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        padding: 30px;
+    }
+
+    .contact-title {
+        font-size: 2rem;
+    }
+
+    input,
+    textarea {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+    }
 }
