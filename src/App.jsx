@@ -9,12 +9,31 @@ import Contact from "./Components/Contact";
 import Pro from "./Components/Pro";
 import "./App.css";
 
-const MainContent = () => {
+// ✅ Custom hook to detect desktop screen
+const useIsDesktop = () => {
+  const [isDesktop, setIsDesktop] = React.useState(window.innerWidth >= 1024);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return isDesktop;
+};
+
+const App = () => {
+  const isDesktop = useIsDesktop();
+  const location = useLocation();
+
+  // Refs for scrolling
   const homeRef = useRef(null);
   const aboutusRef = useRef(null);
   const teamRef = useRef(null);
   const contactusRef = useRef(null);
-  const location = useLocation();
 
   const sectionRefs = {
     home: homeRef,
@@ -32,39 +51,59 @@ const MainContent = () => {
     }
   };
 
+  // Scroll to top when at "/"
   useEffect(() => {
     if (location.pathname === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [location]);
 
-  return (
-    <>
-      <Nav scrollToSection={scrollToSection} />
-      <main>
-        <section ref={homeRef} id="home">
-          <Home scrollToSection={scrollToSection} />
-        </section>
-        <section ref={aboutusRef} id="aboutus">
-          <About />
-        </section>
-        <section ref={teamRef} id="team">
-          <Team />
-        </section>
-        <section ref={contactusRef} id="contact">
-          <Contact />
-        </section>
-      </main>
-    </>
-  );
-};
+  if (!isDesktop) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          textAlign: "center",
+          backgroundColor: "#111",
+          color: "#fff",
+          fontSize: "1.5rem",
+          padding: "20px",
+        }}
+      >
+        🚫 This site is only available on Desktop/Laptop
+      </div>
+    );
+  }
 
-const App = () => {
   return (
     <>
       <Bground />
       <Routes>
-        <Route path="/" element={<MainContent />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Nav scrollToSection={scrollToSection} />
+              <main>
+                <section ref={homeRef} id="home">
+                  <Home scrollToSection={scrollToSection} />
+                </section>
+                <section ref={aboutusRef} id="aboutus">
+                  <About />
+                </section>
+                <section ref={teamRef} id="team">
+                  <Team />
+                </section>
+                <section ref={contactusRef} id="contact">
+                  <Contact />
+                </section>
+              </main>
+            </>
+          }
+        />
         <Route path="/profile/:id" element={<Pro />} />
       </Routes>
     </>

@@ -17,7 +17,7 @@ const Home = ({ scrollToSection }) => {
       <video
         ref={videoRef}
         className="background-video"
-        src="/video/Blue Modern Technology YouTube Intro.mp4"
+        src="https://res.cloudinary.com/dyjompn6w/video/upload/v1755364323/Blue_Modern_Technology_YouTube_Intro_lsvi4m.mp4"
         autoPlay
         muted
         loop={false}
